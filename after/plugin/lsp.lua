@@ -1,4 +1,5 @@
 local telescope = require('telescope.builtin')
+local navic = require('nvim-navic')
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
