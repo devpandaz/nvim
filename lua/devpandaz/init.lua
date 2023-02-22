@@ -12,3 +12,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.api.nvim_create_user_command('Packer', function() require('devpandaz.packer') end, {})
