@@ -1,4 +1,4 @@
-to use packer, just `:Packer` (it's a custom command, it will
-`require('devpandaz.packer)`)
+to use packer, just `:Packer`
 
-> `packer` is bootstrapped in case need to fresh install
+> `:Packer` is a custom command, it will `require("devpandaz.packer")` `packer`
+> is bootstrapped in case need to fresh install

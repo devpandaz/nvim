@@ -189,7 +189,9 @@ require('packer').startup(function(use)
   })
 
   use {"dstein64/vim-startuptime", opt = true, cmd = {'StartupTime'}}
-  
+
+  use 'nvim-treesitter/nvim-treesitter-context'
+
   if packer_bootstrap then
     require('packer').sync()
   end
