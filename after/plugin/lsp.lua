@@ -61,15 +61,24 @@ require("lspconfig").clangd.setup({
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  pyright = {},
+  tsserver = {},
+  html = {},
+  cssls = {},
 
-  -- lua_language_server = {
+  -- lua_ls = {
   --   Lua = {
-  --     workspace = { checkThirdParty = false },
+  --     runtime = {
+  --       -- Tell the language server which version of Lua you're using (most likely LuaJIT)
+  --       version = 'LuaJIT',
+  --       -- Setup your lua path
+  --       path = runtime_path,
+  --     },
+  --     diagnostics = {
+  --       globals = { 'vim' },
+  --     },
+  --     workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+  --     -- Do not send telemetry data containing a randomized but unique identifier
   --     telemetry = { enable = false },
   --   },
   -- },
@@ -77,7 +86,7 @@ local servers = {
 
 -- Setup neovim lua configuration
 require('neodev').setup()
---
+
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)

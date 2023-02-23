@@ -1,5 +1,6 @@
 require('devpandaz.set')
 require('devpandaz.remap')
+require('impatient')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
