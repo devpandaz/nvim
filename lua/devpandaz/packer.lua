@@ -82,6 +82,8 @@ require('packer').startup(function(use)
     "nvim-telescope/telescope-file-browser.nvim",
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   }
+  
+  use { 'molecule-man/telescope-menufacture' }
 
   -- noice.nvim
   use{
