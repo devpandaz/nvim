@@ -17,3 +17,11 @@
 2. `:w` (save) and `:so` (source) it.
 3. `:PackerInstall` or `:PackerSync`.
 4. Enjoy the new plugins. If it does not work as intended, just restart neovim.
+
+# to update any existing plugins setup file
+
+1. Go to the plugin setup file that you want to edit, e.g.
+   [`after/plugin/telescope.lua`](https://github.com/devpandaz/nvim/blob/main/after/plugin/telescope.lua).
+2. Make your changes.
+3. `:w` (save) and `:so` (source) it.
+4. Enjoy the changes. If it does not work as intended, just restart neovim.
