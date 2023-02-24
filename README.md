@@ -1,3 +1,5 @@
+![nvim screenshot](./screenshot.png)
+
 # for fresh install
 
 1. [Download Packer](https://github.com/wbthomason/packer.nvim#quickstart)
