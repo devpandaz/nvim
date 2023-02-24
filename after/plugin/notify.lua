@@ -1,5 +1,5 @@
 -- nvim-notify config
-require("notify").setup({
-  render = "compact"
-})
+-- require("notify").setup({
+--   render = "compact"
+-- })
 

@@ -9,7 +9,7 @@
 3. `:PackerSync`
 4. Restart neovim.
 
-# to use packer (e.g. to install new plugin)
+# to install/remove plugin
 
 1. Go to
    [`lua/devpandaz/packer.lua`](https://github.com/devpandaz/nvim/blob/main/lua/devpandaz/packer.lua)
@@ -25,3 +25,9 @@
 2. Make your changes.
 3. `:w` (save) and `:so` (source) it.
 4. Enjoy the changes. If it does not work as intended, just restart neovim.
+
+# to use packer (e.g. to load opt plugins)
+
+1. `:Packer` (it's a custom command, it will `require('devpandaz.packer')`)
+2. You can now use any packer command, e.g. (`:PackerLoad` to load optional
+   plugins).

@@ -86,17 +86,17 @@ require('packer').startup(function(use)
   use { 'molecule-man/telescope-menufacture' }
 
   -- noice.nvim
-  use{
-    "folke/noice.nvim",
-    requires = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    }
-  }
+  -- use{
+  --   "folke/noice.nvim",
+  --   requires = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     "MunifTanjim/nui.nvim",
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     "rcarriga/nvim-notify",
+  --   }
+  -- }
 
   -- ***** opt plugins *****
 
@@ -104,7 +104,7 @@ require('packer').startup(function(use)
   use {'andweeb/presence.nvim', opt = true}
 
   -- zen mode
-  use { "folke/zen-mode.nvim", opt = true }
+  use { "folke/zen-mode.nvim", opt = true, cmd = { 'ZenMode' }}
 
   -- vim-startuptime
   use { "dstein64/vim-startuptime", opt = true, cmd = { 'StartupTime' } }

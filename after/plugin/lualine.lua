@@ -6,10 +6,9 @@ local navic = require("nvim-navic")
 
 require('lualine').setup {
   options = {
-    icons_enabled = false,
     theme = 'gruvbox_dark',
-    component_separators = '|',
-    section_separators = '',
+    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' }
   },
   sections = {
     lualine_c = {
@@ -17,4 +16,3 @@ require('lualine').setup {
     }
   }
 }
-
