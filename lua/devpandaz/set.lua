@@ -43,3 +43,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.g.python3_host_prog = "C:/Users/super/AppData/Local/Programs/Python/Python310/python.exe"
+
+-- 'block' cursor in insert mode
+vim.o.guicursor = 'i:block'
