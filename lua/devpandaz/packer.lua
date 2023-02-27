@@ -1,3 +1,9 @@
+local status, packer = pcall(require, 'packer')
+if (not status) then
+  print('Packer is not installed')
+  return
+end
+
 require('packer').startup(function(use)
   -- packer manager
   use 'wbthomason/packer.nvim'
@@ -22,12 +28,30 @@ require('packer').startup(function(use)
   }
 
   -- lspkind
-  use { 'onsails/lspkind.nvim' }
+  use {
+    'onsails/lspkind.nvim',
+    event = 'BufRead',
+    config = function() require('devpandaz.plugin.lazyload.lspsaga')  end
+  }
 
   -- autocompletion
   use {
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+  }
+
+  -- lspsaga
+  use {
+    "glepnir/lspsaga.nvim",
+    event = "BufRead",
+    branch = "main",
+    config = function()
+      require('devpandaz.plugin.lazyload.lspsaga')
+    end,
+    requires = {
+      {"nvim-tree/nvim-web-devicons"},
+      {"nvim-treesitter/nvim-treesitter"}
+    },
   }
 
   -- treesitter
@@ -63,10 +87,6 @@ require('packer').startup(function(use)
     tag = "v3.*",
     requires = 'nvim-tree/nvim-web-devicons'
   }
-  use { -- navic (for code context)
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig"
-  }
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines (or "gcc" in normal)
   use 'sbdchd/neoformat' -- code formatter
   use { "windwp/nvim-autopairs" } -- autopairs
@@ -85,29 +105,14 @@ require('packer').startup(function(use)
   
   use { 'molecule-man/telescope-menufacture' }
 
-  -- noice.nvim
-  -- use{
-  --   "folke/noice.nvim",
-  --   requires = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     "MunifTanjim/nui.nvim",
-  --     -- OPTIONAL:
-  --     --   `nvim-notify` is only needed, if you want to use the notification view.
-  --     --   If not available, we use `mini` as the fallback
-  --     "rcarriga/nvim-notify",
-  --   }
-  -- }
-
-  -- ***** opt plugins *****
-
-  -- discord presence
-  use {'andweeb/presence.nvim', opt = true}
+  -- discord presence, :DiscordPresence to load (it's a custom command created in devpandaz/init.lua)
+  use {'andweeb/presence.nvim', opt = true, config = function()
+    print('discord presence enabled')
+    require('devpandaz.plugin.lazyload.presence')
+  end}
 
   -- zen mode
-  use { "folke/zen-mode.nvim", opt = true, cmd = { 'ZenMode' }}
-
-  -- vim-startuptime
-  use { "dstein64/vim-startuptime", opt = true, cmd = { 'StartupTime' } }
+  use { "folke/zen-mode.nvim", cmd = { 'ZenMode' }}
 
   -- markdown preview
   use({
@@ -115,7 +120,6 @@ require('packer').startup(function(use)
     run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
-    opt = true,
     cmd = { "MarkdownPreview" },
   })
 
@@ -124,32 +128,16 @@ require('packer').startup(function(use)
     "folke/trouble.nvim",
     requires = "nvim-tree/nvim-web-devicons",
     config = function()
-      require('trouble').setup()
+      require('devpandaz.plugin.lazyload.trouble')
     end,
-    opt = true,
     cmd = { 'Trouble', 'TroubleToggle' },
   }
 
   -- nvim-transparent
   use { "xiyaowong/nvim-transparent",
-    opt = true,
     cmd = { 'TransparentEnable', 'TransparentToggle' },
     config = function()
-      require("transparent").setup({
-        enable = true, -- boolean: enable transparent
-        extra_groups = { -- table/string: additional groups that should be cleared
-          -- In particular, when you set it to 'all', that means all available groups
-
-          -- example of akinsho/nvim-bufferline.lua
-          "BufferLineTabClose",
-          "BufferlineBufferSelected",
-          "BufferLineFill",
-          "BufferLineBackground",
-          "BufferLineSeparator",
-          "BufferLineIndicatorSelected",
-        },
-        exclude = {}, -- table: groups you don't want to clear
-      })
+      require('devpandaz.plugin.lazyload.transparent')
     end
   }
 

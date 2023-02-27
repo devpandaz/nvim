@@ -1,5 +1,8 @@
+local status, autopairs = pcall(require, 'nvim-autopairs')
+if (not status) then return end
+
 -- autopairs config
-require("nvim-autopairs").setup()
+autopairs.setup()
 
 -- If you want insert `(` after select function or method item
 -- local cmp = require('cmp')

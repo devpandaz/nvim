@@ -1,3 +1,6 @@
+local status = pcall(require, 'nvim-treesitter')
+if (not status) then return end
+
 -- set treesitter install compiler
 require('nvim-treesitter.install').compilers = { "zig" }
 

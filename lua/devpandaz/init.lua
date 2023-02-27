@@ -1,6 +1,7 @@
 require('devpandaz.set')
 require('devpandaz.remap')
 require('impatient')
+require('devpandaz.packer')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -13,4 +14,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-vim.api.nvim_create_user_command('Packer', function() require("devpandaz.packer") end, {})
+vim.api.nvim_create_user_command('DiscordPresence', function() vim.cmd[[PackerLoad presence.nvim]] end, {})
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et

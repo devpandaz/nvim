@@ -1,3 +1,6 @@
+local status, autotag = pcall(require, 'nvim-ts-autotag')
+if (not status) then return end
+
 -- autoclose and autorename html tags
-require('nvim-ts-autotag').setup()
+autotag.setup()
 

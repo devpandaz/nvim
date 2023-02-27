@@ -1,5 +1,9 @@
 -- noice.nvim
--- require("noice").setup({
+
+-- local status, noice = pcall(require, 'noice')
+-- if (not status) then return end
+
+-- noice.setup({
 --   lsp = {
 --     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 --     override = {
