@@ -1,4 +1,5 @@
-![nvim screenshot](./screenshot.png)
+![nvim screenshot](./screenshot.png)\
+![nvim screenshot 2](./screenshot2.png)
 
 # for fresh install
 
