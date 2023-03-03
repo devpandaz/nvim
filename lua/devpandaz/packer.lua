@@ -103,7 +103,11 @@ require('packer').startup(function(use)
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   }
   
+  -- telescope m[e]nufacture (telescope extension)
   use { 'molecule-man/telescope-menufacture' }
+
+  -- colorizer
+  use 'norcalli/nvim-colorizer.lua'
 
   -- discord presence, :DiscordPresence to load (it's a custom command created in devpandaz/init.lua)
   use {'andweeb/presence.nvim', opt = true, config = function()
