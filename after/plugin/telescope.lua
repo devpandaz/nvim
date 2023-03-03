@@ -55,17 +55,17 @@ vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps'
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', telescope.extensions.menufacture.grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', telescope.extensions.menufacture.live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+-- vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- more keymaps lmao
 -- open file in new tab
-vim.keymap.set('n', '<leader>of', function() vim.api.nvim_command("tabnew") telescope.extensions.menufacture.find_files() end, { desc = '[O]pen [F]ile in new tab' })
+vim.keymap.set('n', '<leader>of', function() vim.cmd("tabnew") telescope.extensions.menufacture.find_files() end, { desc = '[O]pen [F]ile in new tab' })
 
 -- open recent file in new tab
-vim.keymap.set('n', '<leader>or', function() vim.api.nvim_command("tabnew") builtin.oldfiles() end , { desc = '[O]pen [R]ecent file in new tab' })
+vim.keymap.set('n', '<leader>or', function() vim.cmd("tabnew") builtin.oldfiles() end , { desc = '[O]pen [R]ecent file in new tab' })
 
 -- open existing buffers in new tab
-vim.keymap.set('n', '<leader>ob', function() vim.api.nvim_command('tabnew') builtin.buffers() end, { desc = '[O]pen [B}uffer in new tab' })
+vim.keymap.set('n', '<leader>ob', function() vim.cmd('tabnew') builtin.buffers() end, { desc = '[O]pen [B}uffer in new tab' })
 
 -- open telescope file browser
 vim.keymap.set('n', '<leader>fb', function() telescope.extensions.file_browser.file_browser({ git_status = true, path="%:p:h", select_buffer = true}) end)

@@ -32,7 +32,7 @@ keymap("n", "gr", "<cmd>Lspsaga rename ++project<CR>")
 -- Show line diagnostics
 -- You can pass argument ++unfocus to
 -- unfocus the show_line_diagnostics floating window
-keymap("n", "<leader>e", "<cmd>lspsaga show_line_diagnostics<cr>")
+keymap("n", "<leader>e", "<cmd>Lspsaga show_line_diagnostics<cr>")
 
 -- Diagnostic jump
 -- You can use <C-o> to jump back to your previous location
