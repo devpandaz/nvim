@@ -46,3 +46,5 @@ vim.g.python3_host_prog = "C:/Users/super/AppData/Local/Programs/Python/Python31
 
 -- 'block' cursor in insert mode
 vim.o.guicursor = 'i:block'
+
+vim.o.scrolloff = 999

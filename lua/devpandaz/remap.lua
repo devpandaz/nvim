@@ -3,11 +3,10 @@
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
--- zz is for centering
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gkzz' : 'kzz'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gjzz' : 'jzz'", { expr = true, silent = true })
-vim.keymap.set('x', 'j', 'jzz')
-vim.keymap.set('x', 'k', 'kzz')
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('x', 'j', 'j')
+vim.keymap.set('x', 'k', 'k')
 
 ----- custom keymaps ------
 
@@ -28,10 +27,9 @@ vim.keymap.set('v', '<c-x>', '"+c', { desc = 'Cut' })
 vim.keymap.set('v', '<c-v>', 'c<esc>"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set('i', '<c-v>', '<esc>"+pa', { desc = 'Paste from system clipboard' })
 
--- zz for centering
-vim.keymap.set('n', '<s-g>', '<s-g>zz')
-vim.keymap.set('n', 'n', 'nzz')
-vim.keymap.set('n', 'N', 'Nzz')
+vim.keymap.set('n', '<s-g>', '<s-g>')
+vim.keymap.set('n', 'n', 'n')
+vim.keymap.set('n', 'N', 'N')
 
 -- remap s to nothing. see :h s
 vim.keymap.set('n', 's', '')
@@ -47,6 +45,9 @@ vim.keymap.set('x', '<s-tab>', '<gv', { desc = 'indent out' })
 -- Increment/decrement
 vim.keymap.set('n', '+', '<C-a>', { desc = 'increment' })
 vim.keymap.set('n', '-', '<C-x>', { desc = 'decrement' })
+
+-- new tab
+vim.keymap.set('n', 'te', ':tabedit')
 
 -- Select all
 vim.keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'select/highlight all' })
