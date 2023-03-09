@@ -1,5 +1,5 @@
-![nvim screenshot](./screenshots/screenshot.png)\
-![nvim screenshot 2](./screenshots/screenshot3.png)
+![python tkinter with neovim](./screenshots/screenshot.png)\
+![react native with neovim](./screenshots/screenshot3.png)
 
 # for fresh install
 
@@ -16,7 +16,7 @@
    [`lua/devpandaz/packer.lua`](https://github.com/devpandaz/nvim/blob/main/lua/devpandaz/packer.lua)
    and make the changes you want.
 2. `:w` (save) and `:so` (source) it.
-3. `:PackerInstall` or `:PackerUpdate` (if needed)
+3. `:PackerInstall` (if need to install new plugins or change to opt plugins)
 4. `:PackerCompile`
 5. The changes would be applied when you launch neovim next time.
 
@@ -42,5 +42,6 @@
 
 # to update all plugins
 
-1. `:PackerSync` (avoid doing this if possible, causes a heavy load to the
-   system)
+- `:PackerUpdate`
+- `:PackerSync` (avoid doing this if possible, causes a heavy load to the
+  system)
