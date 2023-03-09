@@ -109,6 +109,9 @@ require('packer').startup(function(use)
   -- colorizer
   use 'norcalli/nvim-colorizer.lua'
 
+  -- flutter
+  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+
   -- discord presence, :DiscordPresence to load (it's a custom command created in devpandaz/init.lua)
   use {'andweeb/presence.nvim', opt = true, config = function()
     print('discord presence enabled')
