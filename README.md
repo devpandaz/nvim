@@ -16,7 +16,8 @@
    [`lua/devpandaz/packer.lua`](https://github.com/devpandaz/nvim/blob/main/lua/devpandaz/packer.lua)
    and make the changes you want.
 2. `:w` (save) and `:so` (source) it.
-3. `:PackerInstall` (if need to install new plugins or change to opt plugins)
+3. `:PackerInstall` (if need to install new plugins, or, added/removed
+   `opt = true` property)
 4. `:PackerCompile`
 5. The changes would be applied when you launch neovim next time.
 
@@ -30,7 +31,9 @@
 > note for myself: to lazy load plugins, must include either one lazy load
 > config, e.g. `opt`, `cmd`, `ft`.\
 > If for example `cmd` or `ft` is stated already, `opt` is not needed, but no
-> harm in including too.
+> harm in including too.\
+> See
+> [`packer.nvim`'s readme](https://github.com/wbthomason/packer.nvim/blob/1d0cf98a561f7fd654c970c49f917d74fafe1530/README.md?plain=1#LL394C42-L394C42).
 
 # to update any existing plugins setup file
 
@@ -45,3 +48,7 @@
 - `:PackerUpdate`
 - `:PackerSync` (avoid doing this if possible, causes a heavy load to the
   system)
+
+---
+
+> #### Always go back to [packer's documentation (readme)](https://github.com/devpandaz/nvim/blob/main/lua/devpandaz/packer.lua) if got any problem.

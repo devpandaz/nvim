@@ -43,11 +43,19 @@ require('packer').startup(function(use)
   -- lspsaga
   use {
     "glepnir/lspsaga.nvim",
-    event = "BufRead",
+    event = "BufRead", --lazy load on BufRead
+    
+    -- note: 'setup' is executed before the plugin loads
+    -- if the first file opened is a dart file, then before lspsaga loads, flutter-tools must load first
+    -- if not, just load lspsaga as usual, and flutter-tools would be loaded whenever a dart file is opened, using ft = 'dart' (see flutter-tools section)
+    setup = function() if (vim.bo.filetype == 'dart') then vim.cmd[[PackerLoad flutter-tools.nvim]] end end, 
+
     branch = "main",
+    
     config = function()
       require('devpandaz.plugin.lazyload.lspsaga')
     end,
+
     requires = {
       {"nvim-tree/nvim-web-devicons"},
       {"nvim-treesitter/nvim-treesitter"}
@@ -106,11 +114,16 @@ require('packer').startup(function(use)
   -- telescope m[e]nufacture (telescope extension)
   use { 'molecule-man/telescope-menufacture' }
 
+  -- flutter-tools
+  use {
+    'akinsho/flutter-tools.nvim',
+    ft = 'dart',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function() require('devpandaz.plugin.lazyload.flutter-tools') end
+  }
+
   -- colorizer
   use 'norcalli/nvim-colorizer.lua'
-
-  -- flutter
-  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 
   -- discord presence, :DiscordPresence to load (it's a custom command created in devpandaz/init.lua)
   use {'andweeb/presence.nvim', opt = true, config = function()
