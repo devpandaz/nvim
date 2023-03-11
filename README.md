@@ -1,5 +1,8 @@
-![python tkinter with neovim](./screenshots/screenshot.png)\
-![react native with neovim](./screenshots/screenshot3.png)
+![python tkinter with neovim](./screenshots/screenshot.png)
+
+<!-- ![react native with neovim](./screenshots/screenshot3.png) -->
+
+![flutter with neovim](./screenshots/screenshot4.png)
 
 # for fresh install
 
