@@ -161,4 +161,7 @@ require('packer').startup(function(use)
     end
   }
 
+  -- github copilot
+  use {"github/copilot.vim", cmd = 'Copilot'}
+
 end)
