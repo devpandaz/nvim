@@ -54,4 +54,4 @@
 
 ---
 
-> #### Always go back to [packer's documentation (readme)](https://github.com/devpandaz/nvim/blob/main/lua/devpandaz/packer.lua) if got any problem.
+> #### Always go back to [packer's documentation (readme)](https://github.com/wbthomason/packer.nvim/blob/master/README.md) if got any problem.
