@@ -60,6 +60,8 @@ local servers = {
   tsserver = {},
   html = {},
   cssls = {},
+  tailwindcss = {},
+  jsonls = {},
 
   -- lua_ls = {
   --   Lua = {
@@ -155,7 +157,10 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ['<Esc>'] = cmp.mapping.close(),
+    ['<Esc>'] = cmp.mapping(function(fallback)
+      cmp.mapping.close()
+      vim.cmd[[stopinsert]]
+    end),
   },
   sources = {
     { name = 'nvim_lsp' },
