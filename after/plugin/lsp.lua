@@ -167,3 +167,17 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- disable lsp warnings/errors virtual text (text beside code)
+-- too annoying and cant even see the warning/error text properly if its too long
+-- just use <space>e to open warning/error in lspsaga floating window
+local function setup_diags()
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
+      virtual_text = false,
+    }
+  )
+end
+
+setup_diags()

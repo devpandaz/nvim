@@ -47,7 +47,7 @@ vim.keymap.set('n', '+', '<C-a>', { desc = 'increment' })
 vim.keymap.set('n', '-', '<C-x>', { desc = 'decrement' })
 
 -- new tab
-vim.keymap.set('n', 'te', ':tabedit')
+vim.keymap.set('n', '<space>te', ':tabedit ')
 
 -- Select all
 vim.keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'select/highlight all' })

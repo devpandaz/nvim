@@ -31,7 +31,7 @@ require('packer').startup(function(use)
   use {
     'onsails/lspkind.nvim',
     event = 'BufRead',
-    config = function() require('devpandaz.plugin.lazyload.lspsaga')  end
+    config = function() require('devpandaz.plugin.lazyload.lspsaga') end
   }
 
   -- autocompletion
