@@ -168,7 +168,7 @@ cmp.setup {
   },
 }
 
--- disable lsp warnings/errors virtual text (text beside code)
+-- disable lsp warnings/errors virtual text (text beside code): https://github.com/samhh/dotfiles/blob/99e67298fbcb61d7398ad1850f3c2df31d90bd0d/home/.config/nvim/plugin/lsp.lua#L120
 -- too annoying and cant even see the warning/error text properly if its too long
 -- just use <space>e to open warning/error in lspsaga floating window
 local function setup_diags()
