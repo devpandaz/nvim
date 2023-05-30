@@ -4,14 +4,25 @@
 
 ![flutter with neovim](./screenshots/screenshot4.png)
 
-# for fresh install
+# for fresh install on new machine
+
+prerequisites (install using [scoop](https://scoop.sh)):
+
+- zig (to compile treesitter parsers)
+- [fzf](https://github.com/junegunn/fzf) (for telescope)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (for fzf to respect
+  .gitignore so that telescope doesn't show ignored folders)
+
+---
 
 1. [Download Packer](https://github.com/wbthomason/packer.nvim#quickstart)
    \
    `git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"`
-2. Launch neovim.
-3. `:PackerSync`
-4. Restart neovim.
+2. Clone this nvim config repo into the local nvim config folder by
+   `git clone https://github.com/devpandaz/nvim.git "$env:LOCALAPPDATA\nvim"`
+3. Launch neovim.
+4. `:PackerSync`
+5. Restart neovim.
 
 # to make changes to [`packer.lua`](https://github.com/devpandaz/nvim/blob/main/lua/devpandaz/packer.lua)
 

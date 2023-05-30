@@ -1,6 +1,6 @@
 require('devpandaz.set')
 require('devpandaz.remap')
-require('impatient')
+pcall(require('impatient'))
 require('devpandaz.packer')
 
 -- [[ Highlight on yank ]]
