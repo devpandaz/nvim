@@ -16,10 +16,13 @@ prerequisites (install using [scoop](https://scoop.sh)):
 ---
 
 1. [Download Packer](https://github.com/wbthomason/packer.nvim#quickstart)
-   \
-   `git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"`
+   ```powershell
+   git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+   ```
 2. Clone this nvim config repo into the local nvim config folder by
-   `git clone https://github.com/devpandaz/nvim.git "$env:LOCALAPPDATA\nvim"`
+   ```powershell
+   git clone https://github.com/devpandaz/nvim.git "$env:LOCALAPPDATA\nvim"
+   ```
 3. Launch neovim.
 4. `:PackerSync`
 5. Restart neovim.
