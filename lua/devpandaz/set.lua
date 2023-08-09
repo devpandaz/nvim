@@ -30,7 +30,7 @@ vim.wo.signcolumn = 'yes'
 -- Set colorscheme
 vim.o.termguicolors = true
 vim.o.background = 'dark'
-pcall(vim.cmd [[colorscheme gruvbox]])
+pcall(vim.cmd [[colorscheme catppuccin-mocha]])
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'

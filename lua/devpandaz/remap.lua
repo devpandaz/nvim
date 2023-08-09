@@ -3,8 +3,8 @@
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 10 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 10 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set('x', 'j', 'j')
 vim.keymap.set('x', 'k', 'k')
 
@@ -27,9 +27,9 @@ vim.keymap.set('v', '<c-x>', '"+c<esc>', { desc = 'Cut' })
 vim.keymap.set('v', '<c-v>', 'c<esc>"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set('i', '<c-v>', '<esc>"+pa', { desc = 'Paste from system clipboard' })
 
-vim.keymap.set('n', '<s-g>', '<s-g>')
-vim.keymap.set('n', 'n', 'n')
-vim.keymap.set('n', 'N', 'N')
+-- vim.keymap.set('n', '<s-g>', '<s-g>')
+-- vim.keymap.set('n', 'n', 'n')
+-- vim.keymap.set('n', 'N', 'N')
 
 -- remap s to nothing. see :h s
 vim.keymap.set('n', 's', '')
@@ -69,3 +69,7 @@ vim.keymap.set('n', 's<right>', '<C-w><', { desc = 'move window border to the ri
 vim.keymap.set('n', 's<left>', '<C-w>>', { desc = 'move window border to the left' })
 vim.keymap.set('n', 's<up>', '<C-w>+', { desc = 'move window border upwards' })
 vim.keymap.set('n', 's<down>', '<C-w>-', { desc = 'move window border downwards' })
+
+-- delete entire word with ctrl + backspace (see link below as to why ctrl-h is mapped instead of <c-bs>)
+-- https://www.reddit.com/r/neovim/comments/okbag3/comment/h58k9p7/?utm_source=share&utm_medium=web2x&context=3
+vim.keymap.set("i", "<c-h>", "<c-w>", { desc = "delete entire word with ctrl + backspace" })
