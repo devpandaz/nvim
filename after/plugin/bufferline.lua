@@ -9,6 +9,7 @@ bufferline.setup {
       local icon = level:match("error") and " " or ""
       return " " .. icon .. count
     end
-  }
+  },
+  highlights = require("catppuccin.groups.integrations.bufferline").get()
 }
 

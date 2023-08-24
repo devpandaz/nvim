@@ -23,7 +23,7 @@ vim.keymap.set('x', 'k', 'k')
 
 -- copy and paste with system clipboard
 vim.keymap.set('v', '<c-c>', '"+y`><esc>', { desc = 'Copy to clipboard' }) -- `> is to jump to end of selection (after copying)
-vim.keymap.set('v', '<c-x>', '"+c<esc>', { desc = 'Cut' })
+vim.keymap.set('v', '<c-x>', '"+cd<esc>', { desc = 'Cut' })
 vim.keymap.set('v', '<c-v>', 'c<esc>"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set('i', '<c-v>', '<esc>"+pa', { desc = 'Paste from system clipboard' })
 
@@ -59,10 +59,10 @@ vim.keymap.set('n', 'sv', '<cmd>vsplit<cr><C-w>w<cmd>lua require("telescope.buil
 
 -- Navigating between windows
 vim.keymap.set('n', '<leader>w', '<C-w>w', { desc = 'focus next window' })
-vim.keymap.set('', 'sh', '<C-w>h', { desc = 'focus the window at the left' })
+vim.keymap.set('', 'sn', '<C-w>h', { desc = 'focus the window at the left' })
 vim.keymap.set('', 'sk', '<C-w>k', { desc = 'focus the window above' })
 vim.keymap.set('', 'sj', '<C-w>j', { desc = 'focus the window below' })
-vim.keymap.set('', 'sl', '<C-w>l', { desc = 'focus the window at the right' })
+vim.keymap.set('', 'sm', '<C-w>l', { desc = 'focus the window at the right' })
 
 -- Resize window
 vim.keymap.set('n', 's<right>', '<C-w><', { desc = 'move window border to the right' })
@@ -73,3 +73,6 @@ vim.keymap.set('n', 's<down>', '<C-w>-', { desc = 'move window border downwards'
 -- delete entire word with ctrl + backspace (see link below as to why ctrl-h is mapped instead of <c-bs>)
 -- https://www.reddit.com/r/neovim/comments/okbag3/comment/h58k9p7/?utm_source=share&utm_medium=web2x&context=3
 vim.keymap.set("i", "<c-h>", "<c-w>", { desc = "delete entire word with ctrl + backspace" })
+
+-- to prevent the stupid error when pressing shift k in visual mode
+vim.keymap.set("v", "<s-k>", "")
