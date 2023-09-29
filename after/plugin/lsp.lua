@@ -56,12 +56,11 @@ require("lspconfig").clangd.setup({
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  pyright = {},
-  tsserver = {},
-  html = {},
-  cssls = {},
-  tailwindcss = {},
-  jsonls = {},
+  -- pyright = {},
+  -- tsserver = {},
+  -- html = {},
+  -- cssls = {},
+  -- jsonls = {},
 
   -- lua_ls = {
   --   Lua = {

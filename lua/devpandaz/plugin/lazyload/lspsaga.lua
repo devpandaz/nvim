@@ -6,6 +6,9 @@ require('lspsaga').setup {
       normal_bg = '#002b36'
     },
     kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+  },
+  symbol_in_winbar = {
+    enable = false,
   }
 }
 
@@ -15,7 +18,7 @@ local keymap = vim.keymap.set
 -- If there is no definition, it will instead be hidden
 -- When you use an action in finder like "open vsplit",
 -- you can use <C-t> to jump back
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+keymap("n", "gh", "<cmd>Lspsaga finder<CR>")
 
 -- Code action
 keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")

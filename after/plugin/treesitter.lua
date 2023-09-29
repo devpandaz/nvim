@@ -8,7 +8,7 @@ require('nvim-treesitter.install').compilers = { "zig" }
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'help', 'vim', 'python', 'javascript', 'typescript', 'css', 'html', 'tsx'},
+  ensure_installed = {},
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
   incremental_selection = {

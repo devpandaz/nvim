@@ -23,7 +23,7 @@ vim.keymap.set('x', 'k', 'k')
 
 -- copy and paste with system clipboard
 vim.keymap.set('v', '<c-c>', '"+y`><esc>', { desc = 'Copy to clipboard' }) -- `> is to jump to end of selection (after copying)
-vim.keymap.set('v', '<c-x>', '"+cd<esc>', { desc = 'Cut' })
+vim.keymap.set('v', '<c-x>', '"+x<esc>', { desc = 'Cut' })
 vim.keymap.set('v', '<c-v>', 'c<esc>"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set('i', '<c-v>', '<esc>"+pa', { desc = 'Paste from system clipboard' })
 
