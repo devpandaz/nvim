@@ -180,3 +180,5 @@ local function setup_diags()
 end
 
 setup_diags()
+
+lspconfig.stimulus_ls.setup{}

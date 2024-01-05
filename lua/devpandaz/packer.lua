@@ -87,6 +87,7 @@ require('packer').startup(function(use)
   use 'rebelot/kanagawa.nvim'
   use 'folke/tokyonight.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
+  use { "craftzdog/solarized-osaka.nvim" }
 
   -- editor utils
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
