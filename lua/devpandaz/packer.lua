@@ -30,8 +30,8 @@ require('packer').startup(function(use)
   -- lspkind
   use {
     'onsails/lspkind.nvim',
-    event = 'BufRead',
-    config = function() require('devpandaz.plugin.lazyload.lspsaga') end
+    -- event = 'BufRead',
+    -- config = function() require('devpandaz.plugin.lazyload.lspsaga') end
   }
 
   -- autocompletion
@@ -82,7 +82,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  -- themes
+  -- colorschemes
   use "ellisonleao/gruvbox.nvim"
   use 'rebelot/kanagawa.nvim'
   use 'folke/tokyonight.nvim'
@@ -94,7 +94,6 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use { 'akinsho/bufferline.nvim', -- for file tabs
-    tag = "v3.*",
     requires = 'nvim-tree/nvim-web-devicons'
   }
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines (or "gcc" in normal)
@@ -165,5 +164,7 @@ require('packer').startup(function(use)
 
   -- github copilot
   use {"github/copilot.vim", cmd = 'Copilot'}
+
+  use {"mrcjkb/rustaceanvim"}
 
 end)

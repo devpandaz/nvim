@@ -34,9 +34,7 @@ vim.keymap.set('i', '<c-v>', '<esc>"+pa', { desc = 'Paste from system clipboard'
 -- remap s to nothing. see :h s
 vim.keymap.set('n', 's', '')
 -- remap gt to sd, <tab> and gT to ds, <s-tab>
-vim.keymap.set('n', '<tab>', 'gt', { desc = 'go to next tab' })
 vim.keymap.set('n', 'sd', 'gt', { desc = 'go to next tab' })
-vim.keymap.set('n', '<s-tab>', 'gT', { desc = 'go to previous tab' })
 vim.keymap.set('n', 'ds', 'gT', { desc = 'go to previous tab' })
 
 -- tab to indent in visual mode
@@ -78,3 +76,11 @@ vim.keymap.set("i", "<c-h>", "<c-w>", { desc = "delete entire word with ctrl + b
 
 -- to prevent the stupid error when pressing shift k in visual mode
 vim.keymap.set("v", "<s-k>", "")
+
+vim.keymap.set("n", "<cmd>Q", "<cmd>q")
+vim.keymap.set("n", "<cmd>W", "<cmd>w")
+
+vim.keymap.set("n", "H", "^")
+vim.keymap.set("n", "L", "$")
+vim.keymap.set("n", "J", "}")
+vim.keymap.set("n", "K", "{")
