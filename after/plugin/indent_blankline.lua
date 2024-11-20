@@ -25,5 +25,5 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 end)
 
 indent_blankline.setup(
-{ indent = { highlight = highlight } }
+-- { indent = { highlight = highlight } }
 )

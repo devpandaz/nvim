@@ -10,4 +10,4 @@ if (not status) then return end
 -- augroup END
 -- ]]
 
-vim.keymap.set("n", "<leader>for", "<cmd>Neoformat<cr>", { desc = "Format this file" })
+-- vim.keymap.set("n", "<leader>for", "<cmd>Neoformat<cr>", { desc = "Format this file" })
