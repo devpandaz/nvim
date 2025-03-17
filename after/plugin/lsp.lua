@@ -251,15 +251,20 @@ cmp.setup {
 -- disable lsp warnings/errors virtual text (text beside code): https://github.com/samhh/dotfiles/blob/99e67298fbcb61d7398ad1850f3c2df31d90bd0d/home/.config/nvim/plugin/lsp.lua#L120
 -- too annoying and cant even see the warning/error text properly if its too long
 -- just use <space>e to open warning/error in lspsaga floating window
-local function setup_diags()
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-      virtual_text = false,
-    }
-  )
-end
+-- local function setup_diags()
+--   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--     vim.lsp.diagnostic.on_publish_diagnostics,
+--     {
+--       virtual_text = false,
+--     }
+--   )
+-- end
+-- setup_diags()
 
-setup_diags()
+-- hide lsp inline diagnostics
+vim.diagnostic.config({
+  virtual_text = false,
+  severity_sort = true, -- for lspsaga to show inline diagnostics with <leader>e [https://github.com/nvimdev/lspsaga.nvim/issues/1520]
+})
 
 lspconfig.stimulus_ls.setup{}
