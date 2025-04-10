@@ -19,6 +19,21 @@ telescope.setup {
   pickers = {
     find_files = {
       -- theme = 'dropdown'
+      hidden = true,
+      find_command = {
+        'rg',
+        '--files',
+        '--color=never',
+        '--no-heading',
+        '--line-number',
+        '--column',
+        '--smart-case',
+        '--hidden',
+        '--glob',
+        '!{.git/*,.svelte-kit/*,target/*,node_modules/*}',
+        '--path-separator',
+        '/',
+     },
     }
   },
   extensions = {
@@ -68,4 +83,5 @@ vim.keymap.set('n', '<leader>or', function() vim.cmd("tabnew") builtin.oldfiles(
 vim.keymap.set('n', '<leader>ob', function() vim.cmd('tabnew') builtin.buffers() end, { desc = '[O]pen [B}uffer in new tab' })
 
 -- open telescope file browser
-vim.keymap.set('n', '<leader>fb', function() telescope.extensions.file_browser.file_browser({ git_status = true, path="%:p:h", select_buffer = true}) end)
+-- vim.keymap.set('n', '<leader>fb', function() telescope.extensions.file_browser.file_browser({ git_status = true, path="%:p:h", select_buffer = true}) end)
+vim.keymap.set('n', '<leader>fb', '<cmd>Oil --float<cr>', { desc = 'Open [F]ile [B]rowser' })

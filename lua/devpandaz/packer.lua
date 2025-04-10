@@ -167,4 +167,11 @@ require('packer').startup(function(use)
 
   use {"mrcjkb/rustaceanvim"}
 
+  use {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup()
+    end,
+  }
+
 end)
