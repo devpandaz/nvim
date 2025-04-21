@@ -1,16 +1,16 @@
-require('lspsaga').setup {
-  ui = {
-    winblend = 10,
-    border = 'rounded',
-    colors = {
-      normal_bg = '#002b36'
-    },
-    kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
-  },
-  symbol_in_winbar = {
-    enable = false,
-  }
-}
+require("lspsaga").setup({
+	ui = {
+		winblend = 10,
+		border = "rounded",
+		colors = {
+			normal_bg = "#002b36",
+		},
+		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+	},
+	symbol_in_winbar = {
+		enable = false,
+	},
+})
 
 local keymap = vim.keymap.set
 
@@ -21,7 +21,7 @@ local keymap = vim.keymap.set
 keymap("n", "gh", "<cmd>Lspsaga finder<CR>")
 
 -- Code action
-keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
 
 -- Rename all occurrences of the hovered word for the selected files
 keymap("n", "gr", "<cmd>Lspsaga rename ++project<CR>")
@@ -44,7 +44,7 @@ keymap("n", "<C-k>", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
 keymap("n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 
 -- Toggle outline
-keymap("n","<leader>ol", "<cmd>Lspsaga outline<CR>")
+keymap("n", "<leader>ol", "<cmd>Lspsaga outline<CR>")
 
 -- Pressing the key twice will enter the hover window
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")

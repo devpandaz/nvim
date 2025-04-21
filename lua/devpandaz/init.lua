@@ -1,20 +1,22 @@
-require('devpandaz.set')
-require('devpandaz.remap')
-pcall(require('impatient'))
-require('devpandaz.packer')
+require("devpandaz.set")
+require("devpandaz.remap")
+pcall(require("impatient"))
+require("devpandaz.packer")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
-vim.api.nvim_create_user_command('DiscordPresence', function() vim.cmd[[PackerLoad presence.nvim]] end, {})
+vim.api.nvim_create_user_command("DiscordPresence", function()
+	vim.cmd([[PackerLoad presence.nvim]])
+end, {})
 
 -- replacing neoformat to use lsp to format
 vim.keymap.set("n", "<leader>for", "<cmd>Format<cr>", { desc = "Format this file" })

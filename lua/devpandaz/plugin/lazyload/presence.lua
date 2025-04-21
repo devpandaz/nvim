@@ -1,3 +1,3 @@
-require('presence').setup {
-  neovim_image_text = "neovim supremacy", 
-}
+require("presence").setup({
+	neovim_image_text = "neovim supremacy",
+})
