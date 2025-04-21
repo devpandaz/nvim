@@ -3,54 +3,54 @@
 
 local status, telescope = pcall(require, "telescope")
 if not status then
-	return
+  return
 end
 
 local builtin = require("telescope.builtin")
 
 telescope.setup({
-	defaults = {
-		preview = false,
-		mappings = {
-			i = {
-				["<C-u>"] = false,
-				["<C-d>"] = false,
-			},
-		},
-		wrap_results = true,
-		layout_strategy = "horizontal",
-		sorting_strategy = "ascending",
-		winblend = 0,
-	},
-	pickers = {
-		find_files = {
-			-- theme = "ivy",
-			hidden = true,
-			find_command = {
-				"rg",
-				"--files",
-				"--color=never",
-				"--no-heading",
-				"--line-number",
-				"--column",
-				"--smart-case",
-				"--hidden",
-				"--glob",
-				"!{.git/*,.svelte-kit/*,target/*,node_modules/*}",
-				"--path-separator",
-				"/",
-			},
-		},
-	},
-	extensions = {
-		file_browser = {
-			initial_mode = "normal",
-			-- theme = "dropdown",
-			-- disables netrw and use telescope-file-browser in its place
-			hijack_netrw = true,
-			mappings = {},
-		},
-	},
+  defaults = {
+    preview = false,
+    mappings = {
+      i = {
+        ["<C-u>"] = false,
+        ["<C-d>"] = false,
+      },
+    },
+    wrap_results = true,
+    layout_strategy = "horizontal",
+    sorting_strategy = "ascending",
+    winblend = 0,
+  },
+  pickers = {
+    find_files = {
+      -- theme = "ivy",
+      hidden = true,
+      find_command = {
+        "rg",
+        "--files",
+        "--color=never",
+        "--no-heading",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--hidden",
+        "--glob",
+        "!{.git/*,.svelte-kit/*,target/*,node_modules/*}",
+        "--path-separator",
+        "/",
+      },
+    },
+  },
+  extensions = {
+    file_browser = {
+      initial_mode = "normal",
+      -- theme = "dropdown",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {},
+    },
+  },
 })
 
 -- Enable telescope fzf native, if installed
@@ -64,20 +64,20 @@ telescope.load_extension("menufacture")
 
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>?", function()
-	builtin.oldfiles()
+  builtin.oldfiles()
 end, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader><space>", function()
-	builtin.buffers()
+  builtin.buffers()
 end, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>/", function()
-	-- You can pass additional configuration to telescope to change theme, layout, etc.
-	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-		winblend = 10,
-	}))
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+    winblend = 10,
+  }))
 end, { desc = "[/] Fuzzily search in current buffer]" })
 
 vim.keymap.set("n", "<leader>sf", function()
-	telescope.extensions.menufacture.find_files()
+  telescope.extensions.menufacture.find_files()
 end, { desc = "[S]earch [F]iles" })
 vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
@@ -88,20 +88,20 @@ vim.keymap.set("n", "<leader>sg", telescope.extensions.menufacture.live_grep, { 
 -- more keymaps lmao
 -- open file in new tab
 vim.keymap.set("n", "<leader>of", function()
-	vim.cmd("tabnew")
-	telescope.extensions.menufacture.find_files()
+  vim.cmd("tabnew")
+  telescope.extensions.menufacture.find_files()
 end, { desc = "[O]pen [F]ile in new tab" })
 
 -- open recent file in new tab
 vim.keymap.set("n", "<leader>or", function()
-	vim.cmd("tabnew")
-	builtin.oldfiles()
+  vim.cmd("tabnew")
+  builtin.oldfiles()
 end, { desc = "[O]pen [R]ecent file in new tab" })
 
 -- open existing buffers in new tab
 vim.keymap.set("n", "<leader>ob", function()
-	vim.cmd("tabnew")
-	builtin.buffers()
+  vim.cmd("tabnew")
+  builtin.buffers()
 end, { desc = "[O]pen [B}uffer in new tab" })
 
 -- open telescope file browser
@@ -122,4 +122,4 @@ end, { desc = "[O]pen [B}uffer in new tab" })
 -- end, { desc = "[O]pen file browser" })
 
 -- oil.nvim
-vim.keymap.set('n', '<leader>fb', '<cmd>Oil --float<cr>', { desc = 'Open [F]ile [B]rowser' })
+vim.keymap.set("n", "<leader>fb", "<cmd>Oil --float<cr>", { desc = "Open [F]ile [B]rowser" })

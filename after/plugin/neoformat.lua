@@ -1,5 +1,7 @@
-local status = vim.fn.exists(':Neoformat') > 0
-if (not status) then return end
+local status = vim.fn.exists(":Neoformat") > 0
+if not status then
+  return
+end
 
 -- neoformat setup (kinda like prettier)
 -- format on save

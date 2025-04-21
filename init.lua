@@ -1,1 +1,1 @@
-require('devpandaz')
+require("devpandaz")

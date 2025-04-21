@@ -6,4 +6,3 @@
 -- notify.setup({
 --   render = "compact"
 -- })
-

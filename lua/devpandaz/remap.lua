@@ -54,20 +54,20 @@ vim.keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "select/highlight all" })
 
 -- Split window and open telescope
 vim.keymap.set(
-	"n",
-	"sf",
-	'<cmd>vsplit<cr><C-w>w<cmd>lua require("telescope").extensions.menufacture.find_files()<cr>',
-	{ desc = "open file in vertical split window" }
+  "n",
+  "sf",
+  '<cmd>vsplit<cr><C-w>w<cmd>lua require("telescope").extensions.menufacture.find_files()<cr>',
+  { desc = "open file in vertical split window" }
 )
 vim.keymap.set("n", "sv", function()
-	vim.cmd([[vsplit<cr><C-w>w]])
-	builtin.old_files()
+  vim.cmd([[vsplit<cr><C-w>w]])
+  builtin.old_files()
 end, { desc = "split window horizontal" })
 vim.keymap.set(
-	"n",
-	"sv",
-	'<cmd>vsplit<cr><C-w>w<cmd>lua require("telescope.builtin").oldfiles()<cr>',
-	{ desc = "open recent file in vertical split window" }
+  "n",
+  "sv",
+  '<cmd>vsplit<cr><C-w>w<cmd>lua require("telescope.builtin").oldfiles()<cr>',
+  { desc = "open recent file in vertical split window" }
 )
 
 -- Navigating between windows

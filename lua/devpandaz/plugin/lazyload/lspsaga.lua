@@ -1,15 +1,15 @@
 require("lspsaga").setup({
-	ui = {
-		winblend = 10,
-		border = "rounded",
-		colors = {
-			normal_bg = "#002b36",
-		},
-		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
-	},
-	symbol_in_winbar = {
-		enable = false,
-	},
+  ui = {
+    winblend = 10,
+    border = "rounded",
+    colors = {
+      normal_bg = "#002b36",
+    },
+    kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+  },
+  symbol_in_winbar = {
+    enable = false,
+  },
 })
 
 local keymap = vim.keymap.set
