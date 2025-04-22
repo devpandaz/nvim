@@ -21,7 +21,7 @@ return {
         lsp_trouble = true,
       },
     },
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
@@ -47,9 +47,9 @@ return {
     ---@module "ibl"
     ---@type ibl.config
     opts = {},
-  }, -- Add indentation guides even on blank lines
+  },                                               -- Add indentation guides even on blank lines
 
-  { "tpope/vim-sleuth", event = "BufRead" }, -- Detect tabstop and shiftwidth automatically
+  { "tpope/vim-sleuth",       event = "BufRead" }, -- Detect tabstop and shiftwidth automatically
 
   {
     "akinsho/bufferline.nvim", -- for file tabs
@@ -70,10 +70,10 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
-  { "numToStr/Comment.nvim", event = "BufRead", opts = {} }, -- "gc" to comment visual regions/lines (or "gcc" in normal)
+  { "numToStr/Comment.nvim",  event = "BufRead", opts = {} }, -- "gc" to comment visual regions/lines (or "gcc" in normal)
 
-  { "sbdchd/neoformat", event = "BufRead" }, -- code formatter
-  { "windwp/nvim-autopairs", event = "BufRead", opts = {} }, -- autopairs
+  { "sbdchd/neoformat",       event = "BufRead" },            -- code formatter
+  { "windwp/nvim-autopairs",  event = "BufRead", opts = {} }, -- autopairs
   { "windwp/nvim-ts-autotag", event = "BufRead", opts = {} }, -- autotag (autocomplete and autorename html/jsx/tsx tags)
 
   -- telescope
@@ -143,7 +143,8 @@ return {
 
   {
     "nvim-telescope/telescope-fzf-native.nvim",
-    build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+    build =
+    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
   },
 
   -- telescope file browser
@@ -161,38 +162,72 @@ return {
   -- discord presence, :DiscordPresence to load (it's a custom command created in devpandaz/init.lua)
   {
     "andweeb/presence.nvim",
-    cmd = "DiscordPresence",
+    enabled = false,
+    event = "VeryLazy",
     opts = {
       neovim_image_text = "hacking",
     },
   },
 
   -- zen mode
-  { "folke/zen-mode.nvim", cmd = { "ZenMode" } },
+  { "folke/zen-mode.nvim", cmd = { "ZenMode" }, opts = {}, },
 
   -- markdown preview
   {
     "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && npm install",
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
-    cmd = { "MarkdownPreview" },
+    ft = { "markdown" },
   },
 
   -- trouble.nvim
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    cmd = { "Trouble", "TroubleToggle" },
-  },
+  -- {
+  --   "folke/trouble.nvim",
+  --   opts = {}, -- for default options, refer to the configuration section for custom setup.
+  --   cmd = "Trouble",
+  --   keys = {
+  --     {
+  --       "<leader>xx",
+  --       "<cmd>Trouble diagnostics toggle<cr>",
+  --       desc = "Diagnostics (Trouble)",
+  --     },
+  --     {
+  --       "<leader>xX",
+  --       "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+  --       desc = "Buffer Diagnostics (Trouble)",
+  --     },
+  --     {
+  --       "<leader>cs",
+  --       "<cmd>Trouble symbols toggle focus=false<cr>",
+  --       desc = "Symbols (Trouble)",
+  --     },
+  --     {
+  --       "<leader>cl",
+  --       "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+  --       desc = "LSP Definitions / references / ... (Trouble)",
+  --     },
+  --     {
+  --       "<leader>xL",
+  --       "<cmd>Trouble loclist toggle<cr>",
+  --       desc = "Location List (Trouble)",
+  --     },
+  --     {
+  --       "<leader>xQ",
+  --       "<cmd>Trouble qflist toggle<cr>",
+  --       desc = "Quickfix List (Trouble)",
+  --     },
+  --   },
+  -- },
 
   -- nvim-transparent
   {
     "xiyaowong/nvim-transparent",
     cmd = { "TransparentEnable", "TransparentToggle" },
     opts = {
-      enable = true, -- boolean: enable transparent
+      enable = true,   -- boolean: enable transparent
       extra_groups = { -- table/string: additional groups that should be cleared
         -- In particular, when you set it to 'all', that means all available groups
 
@@ -209,7 +244,7 @@ return {
   },
 
   -- github copilot
-  { "github/copilot.vim", cmd = "Copilot" },
+  -- { "github/copilot.vim",  cmd = "Copilot" },
 
   -- oil.nvim
   {
