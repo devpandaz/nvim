@@ -1,6 +1,7 @@
 return {
   {
     "saghen/blink.cmp",
+    enabled = false,
     event = "InsertEnter",
     -- optional: provides snippets for the snippet source
     dependencies = { "rafamadriz/friendly-snippets", "nvim-tree/nvim-web-devicons", "onsails/lspkind.nvim" },
@@ -32,10 +33,9 @@ return {
         ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
       },
-      completion = {
-        list = {
-          selection = "auto_insert",
-        },
+
+      cmdline = {
+        enabled = false,
       },
 
       appearance = {
@@ -44,11 +44,21 @@ return {
         nerd_font_variant = "mono",
       },
 
-      -- (Default) Only show the documentation popup when manually triggered
       completion = {
-        documentation = { auto_show = false },
+        list = {
+          selection = { auto_insert = true, },
+        },
+        documentation = {
+          auto_show = true,
+          treesitter_highlighting = true,
+          window = {
+            border = 'single',
+          },
+        },
         menu = {
+          border = 'single',
           draw = {
+            treesitter = { 'lsp' },
             components = {
               kind_icon = {
                 text = function(ctx)
@@ -87,6 +97,41 @@ return {
         },
       },
 
+      -- Experimental signature help support
+      signature = {
+        enabled = false,
+        trigger = {
+          -- Show the signature help automatically
+          enabled = true,
+          -- Show the signature help window after typing any of alphanumerics, `-` or `_`
+          show_on_keyword = false,
+          blocked_trigger_characters = {},
+          blocked_retrigger_characters = {},
+          -- Show the signature help window after typing a trigger character
+          show_on_trigger_character = true,
+          -- Show the signature help window when entering insert mode
+          show_on_insert = false,
+          -- Show the signature help window when the cursor comes after a trigger character when entering insert mode
+          show_on_insert_on_trigger_character = true,
+        },
+        window = {
+          min_width = 1,
+          max_width = 100,
+          max_height = 10,
+          border = 'single',
+          winblend = 0,
+          winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
+          scrollbar = false, -- Note that the gutter will be disabled when border ~= 'none'
+          -- Which directions to show the window,
+          -- falling back to the next direction when there's not enough space,
+          -- or another window is in the way
+          direction_priority = { 'n', 's' },
+          -- Disable if you run into performance issues
+          treesitter_highlighting = true,
+          show_documentation = true,
+        },
+      },
+
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
@@ -107,16 +152,16 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufEnter",
     dependencies = {
-      "saghen/blink.cmp",
+      -- "saghen/blink.cmp",
       -- Automatically install LSPs to stdpath for neovim
       { "williamboman/mason.nvim", opts = {} },
       "williamboman/mason-lspconfig.nvim",
 
       -- Useful status updates for LSP
-      { "j-hui/fidget.nvim", opts = {} },
+      { "j-hui/fidget.nvim",       opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing
-      { "folke/neodev.nvim", opts = {} },
+      { "folke/neodev.nvim",       opts = {} },
     },
 
     -- example using `opts` for defining servers
@@ -161,15 +206,16 @@ return {
       }
 
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-      for server, config in pairs(servers) do
-        -- passing config.capabilities to blink.cmp merges with the capabilities in your
-        -- `opts[server].capabilities, if you've defined it
-        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
-      end
+      -- blink.cmp
+      -- for server, config in pairs(servers) do
+      --   -- passing config.capabilities to blink.cmp merges with the capabilities in your
+      --   -- `opts[server].capabilities, if you've defined it
+      --   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      --   lspconfig[server].setup(config)
+      -- end
 
       -- Ensure the servers above are installed
       local mason_lspconfig = require("mason-lspconfig")
@@ -188,6 +234,151 @@ return {
         end,
       })
     end,
+  },
+
+  {
+    {
+      "hrsh7th/nvim-cmp",
+      event = "InsertEnter",
+      dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
+      config = function()
+        local cmp = require("cmp")
+        local luasnip = require("luasnip")
+        -- local lspkind = require("lspkind")
+
+        cmp.setup({
+          window = {
+            completion = {
+              border = "rounded",
+            },
+            documentation = {
+              border = "rounded",
+            },
+          },
+          snippet = {
+            expand = function(args)
+              luasnip.lsp_expand(args.body)
+            end,
+          },
+          mapping = cmp.mapping.preset.insert({
+            -- ['<C-j>'] = cmp.mapping.select_next_item(),
+            -- ['<C-k>'] = cmp.mapping.select_prev_item(),
+            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+            ["<C-f>"] = cmp.mapping.scroll_docs(4),
+            ["<C-Space>"] = cmp.mapping.complete(),
+            ["<CR>"] = cmp.mapping.confirm({
+              behavior = cmp.ConfirmBehavior.Replace,
+              select = true,
+            }),
+            ["<Tab>"] = cmp.mapping(function(fallback)
+              if cmp.visible() then
+                cmp.select_next_item()
+              elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+              else
+                fallback()
+              end
+            end, { "i", "s" }),
+            ["<S-Tab>"] = cmp.mapping(function(fallback)
+              if cmp.visible() then
+                cmp.select_prev_item()
+              elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+              else
+                fallback()
+              end
+            end, { "i", "s" }),
+            ["<Esc>"] = cmp.mapping(function(fallback)
+              cmp.mapping.close()
+              vim.cmd([[stopinsert]])
+            end),
+          }),
+          sources = {
+            { name = "nvim_lsp" },
+            { name = "luasnip" },
+          },
+          formatting = {
+            fields = { "abbr", "menu", "kind" },
+            format = function(entry, item)
+              -- Define menu shorthand for different completion sources.
+              local menu_icon = {
+                nvim_lsp = "NLSP",
+                nvim_lua = "NLUA",
+                luasnip = "LSNP",
+                buffer = "BUFF",
+                path = "PATH",
+              }
+
+              local kind_icons = {
+                Text = "",
+                Method = "󰆧",
+                Function = "󰊕",
+                Constructor = "",
+                Field = "󰇽",
+                Variable = "󰂡",
+                Class = "󰠱",
+                Interface = "",
+                Module = "",
+                Property = "󰜢",
+                Unit = "",
+                Value = "󰎠",
+                Enum = "",
+                Keyword = "󰌋",
+                Snippet = "",
+                Color = "󰏘",
+                File = "󰈙",
+                Reference = "",
+                Folder = "󰉋",
+                EnumMember = "",
+                Constant = "󰏿",
+                Struct = "",
+                Event = "",
+                Operator = "󰆕",
+                TypeParameter = "󰅲",
+              }
+
+              -- Kind icons
+              item.kind = string.format("%s %s", kind_icons[item.kind], item.kind) -- This concatenates the icons with the name of the item kind
+
+              -- Set the menu "icon" to the shorthand for each completion source.
+              item.menu = menu_icon[entry.source.name]
+
+              -- Set the fixed width of the completion menu to 60 characters.
+              -- fixed_width = 20
+
+              -- Set 'fixed_width' to false if not provided.
+              fixed_width = fixed_width or false
+
+              -- Get the completion entry text shown in the completion window.
+              local content = item.abbr
+
+              -- Set the fixed completion window width.
+              if fixed_width then
+                vim.o.pumwidth = fixed_width
+              end
+
+              -- Get the width of the current window.
+              local win_width = vim.api.nvim_win_get_width(0)
+
+              -- Set the max content width based on either: 'fixed_width'
+              -- or a percentage of the window width, in this case 20%.
+              -- We subtract 10 from 'fixed_width' to leave room for 'kind' fields.
+              local max_content_width = fixed_width and fixed_width - 10 or math.floor(win_width * 0.2)
+
+              -- Truncate the completion entry text if it's longer than the
+              -- max content width. We subtract 3 from the max content width
+              -- to account for the "..." that will be appended to it.
+              if #content > max_content_width then
+                item.abbr = vim.fn.strcharpart(content, 0, max_content_width - 3) .. "..."
+              else
+                item.abbr = content .. (" "):rep(max_content_width - #content)
+              end
+              return item
+            end,
+          },
+        })
+      end
+    }
   },
 
   {
@@ -248,6 +439,6 @@ return {
   {
     "mrcjkb/rustaceanvim",
     version = "^6", -- Recommended
-    lazy = false, -- This plugin is already lazy
+    lazy = false,   -- This plugin is already lazy
   },
 }
