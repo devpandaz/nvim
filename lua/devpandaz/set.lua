@@ -30,7 +30,6 @@ vim.wo.signcolumn = "yes"
 -- Set colorscheme
 vim.o.termguicolors = true
 vim.o.background = "dark"
-pcall(vim.cmd([[colorscheme catppuccin-mocha]]))
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
@@ -48,3 +47,9 @@ vim.g.python3_host_prog = "C:/Users/super/AppData/Local/Programs/Python/Python31
 vim.o.guicursor = "i:block"
 
 vim.o.scrolloff = 999
+
+-- hide lsp inline diagnostics
+vim.diagnostic.config({
+  virtual_text = false,
+  severity_sort = true, -- for lspsaga to show inline diagnostics with <leader>e [https://github.com/nvimdev/lspsaga.nvim/issues/1520]
+})
