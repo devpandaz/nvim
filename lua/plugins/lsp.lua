@@ -46,19 +46,19 @@ return {
 
       completion = {
         list = {
-          selection = { auto_insert = true, },
+          selection = { auto_insert = true },
         },
         documentation = {
           auto_show = true,
           treesitter_highlighting = true,
           window = {
-            border = 'single',
+            border = "single",
           },
         },
         menu = {
-          border = 'single',
+          border = "single",
           draw = {
-            treesitter = { 'lsp' },
+            treesitter = { "lsp" },
             components = {
               kind_icon = {
                 text = function(ctx)
@@ -118,14 +118,14 @@ return {
           min_width = 1,
           max_width = 100,
           max_height = 10,
-          border = 'single',
+          border = "single",
           winblend = 0,
-          winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
+          winhighlight = "Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder",
           scrollbar = false, -- Note that the gutter will be disabled when border ~= 'none'
           -- Which directions to show the window,
           -- falling back to the next direction when there's not enough space,
           -- or another window is in the way
-          direction_priority = { 'n', 's' },
+          direction_priority = { "n", "s" },
           -- Disable if you run into performance issues
           treesitter_highlighting = true,
           show_documentation = true,
@@ -158,10 +158,10 @@ return {
       "williamboman/mason-lspconfig.nvim",
 
       -- Useful status updates for LSP
-      { "j-hui/fidget.nvim",       opts = {} },
+      { "j-hui/fidget.nvim", opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing
-      { "folke/neodev.nvim",       opts = {} },
+      { "folke/neodev.nvim", opts = {} },
     },
 
     -- example using `opts` for defining servers
@@ -267,6 +267,10 @@ return {
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
             ["<C-Space>"] = cmp.mapping.complete(),
             ["<CR>"] = cmp.mapping.confirm({
+              behavior = cmp.ConfirmBehavior.Replace,
+              select = true,
+            }),
+            ["<space>"] = cmp.mapping.confirm({
               behavior = cmp.ConfirmBehavior.Replace,
               select = true,
             }),
@@ -377,8 +381,8 @@ return {
             end,
           },
         })
-      end
-    }
+      end,
+    },
   },
 
   {
@@ -439,6 +443,6 @@ return {
   {
     "mrcjkb/rustaceanvim",
     version = "^6", -- Recommended
-    lazy = false,   -- This plugin is already lazy
+    lazy = false, -- This plugin is already lazy
   },
 }
